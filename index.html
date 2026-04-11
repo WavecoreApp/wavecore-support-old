@@ -7,15 +7,21 @@
   <meta name="description" content="Official Wavecore support page with contact details, FAQ, app features, and App Store-ready support information." />
   <style>
     :root {
-      --bg: #0b1020;
+      --bg: #08101f;
+      --bg-2: #0c1730;
       --card: rgba(255, 255, 255, 0.08);
+      --card-strong: rgba(255, 255, 255, 0.1);
       --card-border: rgba(255, 255, 255, 0.14);
       --text: #eef2ff;
       --muted: #b7c1dd;
+      --muted-2: #d2d9ef;
       --accent: #7c9cff;
       --accent-2: #8ef0d2;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
       --container: 1120px;
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 20px;
     }
 
     * { box-sizing: border-box; }
@@ -25,26 +31,28 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(124, 156, 255, 0.22), transparent 30%),
-        radial-gradient(circle at top right, rgba(142, 240, 210, 0.14), transparent 28%),
-        linear-gradient(180deg, #0a0f1e 0%, #0f1730 45%, #0b1020 100%);
+        radial-gradient(circle at top left, rgba(124, 156, 255, 0.24), transparent 28%),
+        radial-gradient(circle at top right, rgba(142, 240, 210, 0.12), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(56, 92, 190, 0.16), transparent 34%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 46%, #08101f 100%);
       color: var(--text);
       min-height: 100vh;
-      line-height: 1.56;
+      line-height: 1.62;
     }
 
     a { color: inherit; text-decoration: none; }
+    strong { color: var(--muted-2); }
 
     .container {
       width: min(calc(100% - 32px), var(--container));
       margin: 0 auto;
     }
 
-    .hero { padding: 72px 0 36px; }
+    .hero { padding: 76px 0 36px; }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.18fr 0.82fr;
       gap: 24px;
       align-items: stretch;
     }
@@ -62,19 +70,29 @@
     }
 
     .hero-card {
-      border-radius: 28px;
-      padding: 36px;
+      border-radius: var(--radius-xl);
+      padding: 38px;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto -8%;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(124, 156, 255, 0.18), transparent 68%);
+      pointer-events: none;
     }
 
     .hero-card::after {
       content: "";
       position: absolute;
-      inset: auto -36px -36px auto;
-      width: 210px;
-      height: 210px;
-      background: radial-gradient(circle, rgba(124, 156, 255, 0.32), transparent 72%);
+      inset: auto -54px -54px auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(142, 240, 210, 0.14), transparent 72%);
       pointer-events: none;
     }
 
@@ -92,17 +110,17 @@
     }
 
     h1 {
-      margin: 16px 0 12px;
-      font-size: clamp(38px, 6vw, 64px);
-      line-height: 0.96;
-      letter-spacing: -0.045em;
+      margin: 18px 0 12px;
+      font-size: clamp(40px, 6vw, 66px);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
     }
 
     .hero-copy {
       margin: 0;
       color: var(--muted);
       font-size: 17px;
-      max-width: 720px;
+      max-width: 700px;
     }
 
     .hero-actions {
@@ -116,15 +134,18 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
+      min-height: 50px;
       padding: 0 18px;
       border-radius: 14px;
       font-weight: 700;
-      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
       border: 1px solid transparent;
     }
 
-    .button:hover { transform: translateY(-1px); }
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+    }
 
     .button-primary {
       background: linear-gradient(135deg, var(--accent), #9b8cff);
@@ -144,7 +165,7 @@
 
     .info-card,
     .detail-card {
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       padding: 24px;
     }
 
@@ -175,15 +196,27 @@
       margin-top: 8px;
     }
 
-    main { padding: 12px 0 80px; }
+    main { padding: 12px 0 84px; }
 
     .section {
       margin-top: 22px;
-      padding: 32px;
-      border-radius: 28px;
+      padding: 34px;
+      border-radius: var(--radius-xl);
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -80px -80px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(124, 156, 255, 0.12), transparent 70%);
+      pointer-events: none;
     }
 
     .section-head {
@@ -193,11 +226,14 @@
       justify-content: space-between;
       align-items: end;
       margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
     }
 
     .section-intro {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0;
+      font-size: 17px;
     }
 
     .feature-grid,
@@ -205,17 +241,21 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
+      position: relative;
+      z-index: 1;
     }
 
-    .feature-card {
-      padding: 20px;
-      border-radius: 20px;
+    .feature-card,
+    .detail-card {
+      padding: 24px;
+      border-radius: var(--radius-md);
+      background: var(--card-strong);
     }
 
     .feature-card h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+      font-size: 20px;
+      letter-spacing: -0.03em;
     }
 
     .feature-card p {
@@ -228,11 +268,14 @@
       display: grid;
       gap: 14px;
       margin-top: 20px;
+      position: relative;
+      z-index: 1;
     }
 
     .faq-item {
       border-radius: 20px;
       overflow: hidden;
+      background: rgba(255,255,255,0.06);
     }
 
     .faq-button {
@@ -384,8 +427,8 @@
         <div class="eyebrow">Official Support</div>
         <h1>Wavecore Support</h1>
         <p class="hero-copy">
-          Welcome to the official support page for Wavecore. Here you can find contact information,
-          feature highlights, export and playback help, troubleshooting tips, and answers to common questions.
+          Wavecore is built for people who want their music library to feel clean, fast, and enjoyable to use.
+          On this page you can find the main app features, support details, export guidance, and clear answers to common questions.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="mailto:wavecoresupport@gmail.com">Contact Support</a>
@@ -404,16 +447,16 @@
           <h2>Contact</h2>
           <p><strong>App Name:</strong> Wavecore</p>
           <p><strong>Email:</strong> <a href="mailto:wavecoresupport@gmail.com">wavecoresupport@gmail.com</a></p>
-          <p>For help with playback, export, app behavior, or general questions, please contact support by email.</p>
+          <p>If you need help with importing music, playback, export, metadata edits, or general app behavior, support is available by email.</p>
         </section>
 
         <section class="info-card">
           <h2>Support Request Tips</h2>
           <ul>
-            <li>Describe the action you were trying to perform.</li>
-            <li>Explain what happened and what you expected instead.</li>
+            <li>Tell us what you were trying to do.</li>
+            <li>Describe what happened and what you expected instead.</li>
             <li>Include your device model and iOS or iPadOS version.</li>
-            <li>Add screenshots if they help explain the issue.</li>
+            <li>Add screenshots if they make the issue easier to understand.</li>
           </ul>
         </section>
       </aside>
@@ -427,24 +470,23 @@
           <div>
             <h2>Key Features</h2>
             <p class="section-intro">
-              Wavecore is designed to provide a focused audio experience with playback tools, export support,
-              and a streamlined workflow for working with your content.
+              Wavecore focuses on a pleasant listening experience, thoughtful library tools, and a workflow that keeps your music easy to manage.
             </p>
           </div>
         </div>
 
         <div class="feature-grid">
           <article class="feature-card">
-            <h3>Playback</h3>
-            <p>Use the built-in player to start, pause, resume, and navigate through audio content directly inside the app.</p>
+            <h3>Beautiful Interface</h3>
+            <p>A polished, modern design helps your music library feel organized, readable, and enjoyable to browse every day.</p>
           </article>
           <article class="feature-card">
-            <h3>Export</h3>
-            <p>Export available results or processed content so you can save, share, or continue your work outside the app.</p>
+            <h3>Library Export</h3>
+            <p>Export your library with updated metadata, artwork changes, and edited track information so your work stays with your files.</p>
           </article>
           <article class="feature-card">
-            <h3>Focused Workflow</h3>
-            <p>Access the main actions quickly and work with your content in a clean interface built for fast everyday use.</p>
+            <h3>Tag Editor</h3>
+            <p>Edit important metadata in one place, including titles, artwork, and other library details that keep your collection clean and consistent.</p>
           </article>
         </div>
       </section>
@@ -454,7 +496,7 @@
           <div>
             <h2>App Information</h2>
             <p class="section-intro">
-              This section helps make the support page more complete for App Store review and for users who need basic product details.
+              Basic product details for users, support requests, and App Store review.
             </p>
           </div>
         </div>
@@ -462,15 +504,15 @@
         <div class="detail-grid">
           <article class="detail-card">
             <h3>Compatibility</h3>
-            <p>Wavecore is intended for supported iPhone and iPad devices running a compatible version of iOS or iPadOS.</p>
+            <p>Wavecore is available for supported iPhone and iPad devices running <strong>iOS 18 or later</strong> and <strong>iPadOS 18 or later</strong>. For the best experience, keep your device updated to the latest available system version.</p>
           </article>
           <article class="detail-card">
             <h3>App Version</h3>
-            <p>Replace this text with your current public build version before publishing, for example <code class="inline">Version 1.0</code>.</p>
+            <p><code class="inline">Version 1.0</code> is the current public release listed on this support page. Future updates may include improvements to library management, playback, metadata editing, and export behavior.</p>
           </article>
           <article class="detail-card">
             <h3>Last Updated</h3>
-            <p>Replace this text with the date of your latest support page update, for example <code class="inline">April 7, 2026</code>.</p>
+            <p>This support page was last updated on <code class="inline">April 11, 2026</code> to reflect the current app presentation, support information, and FAQ content.</p>
           </article>
         </div>
       </section>
@@ -480,7 +522,7 @@
           <div>
             <h2>Frequently Asked Questions</h2>
             <p class="section-intro">
-              Tap or click any item to expand it. The FAQ uses a smooth accordion animation so visitors can browse one topic at a time.
+              A quick guide to the most common questions about importing music, using the player, exporting your library, and getting support.
             </p>
           </div>
         </div>
@@ -494,8 +536,8 @@
             <div class="faq-content">
               <div class="faq-inner">
                 <div class="faq-body">
-                  <p>Open the app and navigate to the main content or workspace you want to use. From there, you can access playback controls, available actions, and app-specific tools depending on the current screen.</p>
-                  <p>If you are new to Wavecore, start by exploring the main playback and export actions to become familiar with the interface.</p>
+                  <p>To start building your library, open <strong>Library</strong>, go to <strong>All Songs</strong>, then tap the <strong>plus button</strong>. From there, choose a folder with music or select individual files you want to import.</p>
+                  <p>Mark the files or folder you want to add, then tap <strong>Import</strong>. Once the import is complete, your music appears in the library and is ready for playback, organization, and editing.</p>
                 </div>
               </div>
             </div>
@@ -509,13 +551,8 @@
             <div class="faq-content">
               <div class="faq-inner">
                 <div class="faq-body">
-                  <p>The built-in player allows you to control playback directly within Wavecore.</p>
-                  <ul>
-                    <li>Use Play to begin or resume audio.</li>
-                    <li>Use Pause to stop playback temporarily.</li>
-                    <li>If timeline or position controls are available, move to the part you want to hear.</li>
-                    <li>Monitor playback status from the main player interface.</li>
-                  </ul>
+                  <p>The player is designed to keep listening simple and natural. Open any track from your library to begin playback, then use the player controls to pause, resume, move through the track, or switch to another song.</p>
+                  <p>Wavecore keeps playback close to your library workflow, so you can listen, browse, and manage your music without jumping through unnecessary screens.</p>
                 </div>
               </div>
             </div>
@@ -529,8 +566,8 @@
             <div class="faq-content">
               <div class="faq-inner">
                 <div class="faq-body">
-                  <p>Open the item or result you want to export and look for the export or share action available on that screen. The exact export options may depend on the content and current context inside the app.</p>
-                  <p>If export does not complete as expected, contact <a href="mailto:wavecoresupport@gmail.com">wavecoresupport@gmail.com</a> and include the step where the issue occurred.</p>
+                  <p>Open <strong>Settings</strong>, go to <strong>Library</strong>, and tap <strong>Export Library</strong>. This exports your full library, including files that were updated inside Wavecore.</p>
+                  <p>Export includes edited metadata such as track titles, artwork changes, and other saved tag updates, so the exported library reflects the work you already did inside the app.</p>
                 </div>
               </div>
             </div>
@@ -544,12 +581,14 @@
             <div class="faq-content">
               <div class="faq-inner">
                 <div class="faq-body">
-                  <p>Wavecore includes a focused set of tools for working with audio and related content inside the app.</p>
+                  <p>Wavecore is built around a focused music workflow with features that make your library more pleasant to use and easier to maintain.</p>
                   <ul>
-                    <li>Playback controls</li>
-                    <li>Access to app-specific content actions</li>
-                    <li>Export for supported results</li>
-                    <li>A streamlined workflow for everyday use</li>
+                    <li>Beautiful and clean interface</li>
+                    <li>Built-in player for everyday listening</li>
+                    <li>Tag editor for metadata updates</li>
+                    <li>Hi-Res audio support</li>
+                    <li>Import from files or folders</li>
+                    <li>Library export with saved metadata and artwork changes</li>
                   </ul>
                 </div>
               </div>
@@ -564,8 +603,8 @@
             <div class="faq-content">
               <div class="faq-inner">
                 <div class="faq-body">
-                  <p>Try the action again and make sure you are using the latest version of the app. If the issue continues, send a support email with a short description of the steps that led to the problem.</p>
-                  <p>The more details you provide, the easier it is to identify the cause.</p>
+                  <p>First, try the action again and make sure you are using the latest version of Wavecore. If the issue continues, send a short email describing what you did, what happened, and what you expected to happen instead.</p>
+                  <p>Helpful details such as your device model, iOS or iPadOS version, and screenshots can make troubleshooting much faster.</p>
                 </div>
               </div>
             </div>
@@ -579,8 +618,7 @@
             <div class="faq-content">
               <div class="faq-inner">
                 <div class="faq-body">
-                  <p>For all support questions, please email <a href="mailto:wavecoresupport@gmail.com">wavecoresupport@gmail.com</a>.</p>
-                  <p>You can contact support about playback, export, app behavior, feature questions, or general assistance.</p>
+                  <p>You can contact support at <a href="mailto:wavecoresupport@gmail.com">wavecoresupport@gmail.com</a>. We can help with importing music, playback behavior, metadata editing, exporting your library, and general questions about the app.</p>
                 </div>
               </div>
             </div>
@@ -594,7 +632,7 @@
             <div class="faq-content">
               <div class="faq-inner">
                 <div class="faq-body">
-                  <p>Please see the Privacy Policy page for information about your data and privacy practices.</p>
+                  <p>Please review the <a href="privacy.html">Privacy Policy</a> for information about data handling and privacy practices in Wavecore.</p>
                 </div>
               </div>
             </div>
